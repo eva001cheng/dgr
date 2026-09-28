@@ -163,6 +163,7 @@ body{background:#0a0a0a;color:#e0e0e0;font-family:"Microsoft YaHei","PingFang SC
 <div id="game-container">
   <div id="topbar">
     <span class="topbar-title">⚔️ 打工人大作战</span>
+    <span class="topbar-stat" id="stat-version"></span>
     <span class="topbar-stat">关卡 <span id="stat-day">1-1</span></span>
     <span class="topbar-stat">精力 <span id="stat-energy">100</span><span class="stat-bar"><span class="stat-bar-fill" id="bar-energy"></span></span></span>
     <span class="topbar-stat">士气 <span id="stat-morale">60</span><span class="stat-bar"><span class="stat-bar-fill" id="bar-morale"></span></span></span>
@@ -204,6 +205,7 @@ body{background:#0a0a0a;color:#e0e0e0;font-family:"Microsoft YaHei","PingFang SC
 <div class="tooltip" id="tooltip"></div>
 <script>
 // ==================== 配置 ====================
+const VERSION='v0.2'; // 发版只改这一个常量
 const CONFIG={
   startEnergy:100,maxEnergy:100,startMorale:60,maxMorale:100,startMoney:50,
   waveSpawnInterval:900,towerSellRefund:0.5,fishRegenInterval:3,fishRegenAmount:5,
@@ -706,6 +708,7 @@ if(window.ResizeObserver){new ResizeObserver(()=>rc()).observe(mapArea);}
 window.addEventListener('resize',rc);
 rc();
 elSfxBtn.textContent=sfxOn?'🔊':'🔇';
+document.getElementById('stat-version').textContent=VERSION;
 elSfxBtn.addEventListener('click',()=>{sfxOn=!sfxOn;elSfxBtn.textContent=sfxOn?'🔊':'🔇';try{localStorage.setItem('dgrsfx',sfxOn?'on':'off');}catch(e){}if(!sfxOn&&audioCtx){audioCtx.close();audioCtx=null;audioInit=false;}});
 
 // ==================== 绘制 ====================
